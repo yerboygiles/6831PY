@@ -11,7 +11,7 @@ import time
 import sys
 
 from cscore import CameraServer, VideoSource, UsbCamera, MjpegServer
-from networktables import NetworkTablesInstance
+from networktables import NetworkTablesInstance, NetworkTables
 import ntcore
 
 import cv2
@@ -380,9 +380,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # start NetworkTables
+    NetworkTables.initialize(server='roborio-6831-frc.local')
     ntinst = NetworkTablesInstance.getDefault()
-    #sdash = NetworkTables.getTable('SmartDashboard')
-    #datatable = NetworkTables.getTable('datatable')
+    sdash = NetworkTables.getTable('SmartDashboard')
+    datatable = NetworkTables.getTable('datatable')
 
     if server:
         print("Setting up NetworkTables server")
@@ -399,8 +400,9 @@ if __name__ == "__main__":
     for config in switchedCameraConfigs:
         startSwitchedCamera(config)
 
-
     # loop forever
     while True:
+        sdash.putNumber('someNumber',1234)
         print("Working")
-        time.sleep(10)
+        print(sdash.getNumber('otherNumber'))
+        time.sleep(5)
