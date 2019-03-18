@@ -251,4 +251,7 @@ if __name__ == "__main__":
         # sdash.putNumber('someNumber',1234)
         # print("Working")
         # print(sdash.getNumber('someNumber'))
+        for camera in cameras:
+            frame= camera.read()
+
         time.sleep(10)
