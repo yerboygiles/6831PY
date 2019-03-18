@@ -224,9 +224,9 @@ if __name__ == "__main__":
     NetworkTables.initialize(server='roborio-6831-frc.local')
     pipeline=grip.GripPipeline()
     ntinst = NetworkTablesInstance.getDefault()
-    sdash = NetworkTables.getTable('SmartDashboard')
+    sdash = NetworkTables.getTable('/SmartDashboard')
     datatable = NetworkTables.getTable('datatable')
-
+    
     if server:
         print("Setting up NetworkTables server")
         ntinst.startServer()
