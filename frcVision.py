@@ -206,7 +206,6 @@ def startSwitchedCamera(config):
                     server.setSource(cameras[i])
                     break
 
-
     NetworkTablesInstance.getDefault().getEntry(config.key).addListener(
         listener,
         ntcore.constants.NT_NOTIFY_IMMEDIATE |
@@ -225,7 +224,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # start NetworkTables
-    NetworkTables.setClientMode()
     NetworkTables.initialize()
     ntinst = NetworkTablesInstance.getDefault()
     sdash = NetworkTables.getTable('SmartDashboard')
@@ -252,6 +250,7 @@ if __name__ == "__main__":
         # print("Working")
         # print(sdash.getNumber('someNumber'))
         for camera in cameras:
-            frame= camera.read()
+            #frame=camera.read()
+            pass
 
         time.sleep(10)

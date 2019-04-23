@@ -222,7 +222,6 @@ if __name__ == "__main__":
 
     # start NetworkTables
     NetworkTables.initialize(server='roborio-6831-frc.local')
-    pipeline=grip.GripPipeline()
     ntinst = NetworkTablesInstance.getDefault()
     sdash = NetworkTables.getTable('/SmartDashboard')
     datatable = NetworkTables.getTable('datatable')
@@ -246,14 +245,4 @@ if __name__ == "__main__":
 
     # loop forever
     while True:
-        pipeline.multicamprocesss(cameras)
-        try:
-            if len(cameras)>=1:
-                vexcam1 = pipeline.convex_hulls_output_list[0]
-                print(vexcam1)
-            if len(cameras)>=2:
-                vexcam2 = pipeline.convex_hulls_output_list[1]
-            if len(cameras)>=3:
-                vexcam3 = pipeline.convex_hulls_output_list[2]
-        except:
-            print("No cameras to process.")
+        delay(10)
