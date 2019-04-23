@@ -5,7 +5,7 @@
 # must be accompanied by the FIRST BSD license file in the root directory of
 # the project.
 #----------------------------------------------------------------------------
-#fortnite
+#fortnite 
 import json
 import time
 import sys
@@ -249,8 +249,9 @@ if __name__ == "__main__":
         # sdash.putNumber('someNumber',1234)
         # print("Working")
         # print(sdash.getNumber('someNumber'))
-        for camera in cameras:
-            #frame=camera.read()
-            pass
-
-        time.sleep(10)
+        cap = cv2.VideoCapture(1)
+        while cap.isOpened():
+            cap.grab()
+            _, image = cap.retrieve()
+        ret, frame = cap.read()
+        ret, dst = cv2.threshold(src, value, maxValue, cv2.THRESH_BINARY)
